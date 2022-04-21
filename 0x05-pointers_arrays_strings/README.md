@@ -10,3 +10,4 @@ This is an alx task on pointers, arrays and strings. The main.h contains prototy
 8-Write a function that prints n elements of an array of integers, followed by a new line.
 9-Write a function that copies the string pointed to by src, including the terminating null byte (\0), to the buffer pointed to by dest.
 10-Write a function that convert a string to an integer.
+11-Create a program that generates random valid passwords for the program 101-crackme.
