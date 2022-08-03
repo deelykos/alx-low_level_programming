@@ -2,22 +2,26 @@
 
 /**
  * hash_table_get - retrieves a value associated with a key
- * @ht: hash table to look into
- * @key: key to find
- * Return: value of associated element, or NULL if key couldn't be found
+ * @ht: table to retrieve value from
+ * @key: key to find value
+ *
+ * Return: value associated with key, or NULL if key cannot be found
  */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
-	unsigned long int i, index;
+	unsigned long int index;
+	hash_node_t *tmp;
 
-	if (!ht || !key || *key == '\0')
+	if (ht == NULL || ht->array == NULL || ht->size == 0 ||
+	    key == NULL || strlen(key) == 0)
 		return (NULL);
-
 	index = key_index((const unsigned char *)key, ht->size);
-	for (i = index; ht->array[i]; i++)
+	tmp = ht->array[index];
+	while (tmp != NULL)
 	{
-		if (strcmp(ht->array[i]->key, key) == 0)
-			return (ht->array[i]->value);
+		if (strcmp(tmp->key, key) == 0)
+			return (tmp->value);
+		tmp = tmp->next;
 	}
 	return (NULL);
 }
